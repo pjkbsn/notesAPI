@@ -27,10 +27,10 @@ export const showOverlay = (notesData: Notes[]) => {
     newButton.setAttribute('class', 'new-button');
     newButton.innerText = 'Post';
 
-    let usernameAdded = false;
+    let usernameAdded: boolean = false;
 
     const inputUsername: HTMLInputElement | null = document.querySelector('.text-input');
-    const username: string | undefined = inputUsername.value;
+    const username: string | undefined = inputUsername.value.toUpperCase();
 
 
     // Skapa ett <div>-element för varje anteckning
@@ -40,15 +40,10 @@ export const showOverlay = (notesData: Notes[]) => {
         notesContainer.appendChild(allNotes);
 
 
-        //TA BORT NOTEID, USELESS
-        /*         const noteID: HTMLDivElement = document.createElement('div');
-                noteID.setAttribute('class', 'note-id');
-                noteID.textContent = note.id; */
-
         if (!usernameAdded && note.username) {
             const noteUsername: HTMLDivElement = document.createElement('div');
             noteUsername.setAttribute('class', 'note-username');
-            noteUsername.textContent = note.username;
+            noteUsername.textContent = username;/* note.username.toUpperCase(); */
 
             overlay.appendChild(noteUsername)
 
@@ -86,9 +81,11 @@ export const showOverlay = (notesData: Notes[]) => {
 
         updateButton.addEventListener('click', () => {
 
-            const noteID: string = note.id;
+            //GÖM NEWNOTE
 
-            console.log(noteID);
+            newNote.style.display = 'none';
+
+            const noteID: string = note.id;
 
 
             const updateNote: HTMLDivElement = document.createElement('div');
@@ -116,10 +113,12 @@ export const showOverlay = (notesData: Notes[]) => {
             updateNote.appendChild(updateCloseButton)
 
             updateCloseButton.addEventListener('click', () => {
+                newNote.style.display = 'grid';
                 updateNote.parentNode?.removeChild(updateNote);
             })
 
             updatePostButton.addEventListener('click', async () => {
+                newNote.style.display = 'grid';
                 const newText: string = updateText.value;
 
                 console.log(updateButton);

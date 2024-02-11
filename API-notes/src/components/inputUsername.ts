@@ -8,18 +8,18 @@ document.body.appendChild(container);
 const inputForm: HTMLInputElement = document.createElement('input');
 inputForm.setAttribute('class', 'text-input');
 inputForm.type = 'text';
-inputForm.placeholder = 'Skriv in användarnamn';
+inputForm.placeholder = 'Username here...';
 container?.appendChild(inputForm);
 
 
 const inputButton: HTMLButtonElement = document.createElement('button');
 inputButton.setAttribute('class', 'input-button');
-inputButton.textContent = 'Skicka';
+inputButton.textContent = 'Get notes';
 container.appendChild(inputButton);
 
 
 inputButton.addEventListener('click', async function () {
-    const inputValue = inputForm.value;
+    const inputValue = inputForm.value.toUpperCase();
     const notesData = await getData(inputValue);
 
     // Visa noterna i notesContainer

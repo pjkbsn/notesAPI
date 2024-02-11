@@ -16,7 +16,6 @@ export const getData = async (username: string): Promise<Notes[]> => {
 
 
 
-        console.log(notesData);
 
         return notesData;
     } catch (error) {
