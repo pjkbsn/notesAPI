@@ -1,19 +1,31 @@
-import axios, { AxiosResponse } from "axios";
+import axios/* , { AxiosResponse } */ from "axios";
+import { PostNotes } from "../types/interface";
+import { getData } from "./getAPI";
+import { showOverlay } from "../components/displayNotes";
 
-const note = {
-    username: "ada",
-    title: "Första anteckningen",
-    note: "Min första anteckning",
-};
-const postData = async () => {
+const BASE_URL = "https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com"
+
+
+export const postData = async (title: string, text: string, username: string) => {
     try {
-        const dataToSend = note;
-        const response: AxiosResponse = await axios.post("https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com/api/notes", dataToSend);
-        const responseData: JSON = response.data;
-        console.log(responseData);
-    }
-    catch (error) { }
-};
-postData();
+        const noteToPost: PostNotes = {
+            username: username,
+            title: title,
+            note: text,
+        };
 
-console.log(note);
+        // Posta den nya anteckningen
+        await axios.post(`${BASE_URL}/api/notes`, noteToPost);
+
+        // Hämta den uppdaterade listan med anteckningar
+        const updatedNotes = await getData(username);
+
+        // Visa overlayet med den uppdaterade listan
+        showOverlay(updatedNotes);
+    }
+    catch (error) {
+        console.error("Error posting data: ", error);
+    }
+};
+
+

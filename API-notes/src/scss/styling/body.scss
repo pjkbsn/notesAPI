@@ -1,0 +1,218 @@
+@import '../mixins/mixin.scss';
+
+
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-color: $body-background-color;
+    @include center();
+
+    .text-input {
+        resize: none;
+        height: 10rem;
+    }
+
+    .input-button {
+        height: 5rem;
+        width: 5rem;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $body-background-color;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+
+
+
+    .notes-container {
+        grid-column: 1/4;
+        grid-row-start: 2;
+        grid-row-end: 10;
+        /* grid-row: 3/10; */
+        background-color: $body-background-color;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        overflow-y: auto;
+        gap: 5rem;
+        width: 50vw;
+
+        .all-notes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            color: $primary-text-color;
+            border: 1px solid $border-outline;
+            overflow-y: auto;
+            background-color: $text-background-color;
+            gap: 1rem;
+            min-height: 17.2rem;
+            width: 45vw;
+            overflow-wrap: break-word;
+
+            .note-date {
+                grid-column: 1/5;
+                grid-row: 1;
+                font-family: $main-font;
+                font-size: 1.5rem;
+            }
+
+            .note-title {
+                grid-column: 1/5;
+                grid-row: 2;
+                font-family: $main-font;
+                font-size: 1.5rem;
+            }
+
+            .note-note {
+                grid-column: 1/5;
+                grid-row: span 1;
+                font-family: $main-font;
+                font-size: 1.5rem;
+            }
+
+
+            .deleteButton {
+                grid-column: 3/4;
+                grid-row: 5;
+                background-color: $button-no-color;
+                min-height: 2rem;
+            }
+
+            .updateButton {
+                grid-column: 4/5;
+                grid-row: 5;
+                background-color: $button-ok-color;
+                color: $secondary-text-color;
+                min-height: 2rem;
+            }
+        }
+    }
+
+    .new-note {
+        grid-column: 4/ span 3;
+        grid-row: 2/ span 8;
+        background-color: $body-background-color;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 2rem 1rem repeat(4, 1fr) 1rem 3rem;
+        width: 50vw;
+
+        .new-title {
+            grid-column: 1/3;
+            grid-row: 1;
+            background-color: $body-background-color;
+            border: 1px $border-outline solid;
+            border-radius: 1rem;
+            color: $secondary-text-color;
+            margin-left: .3rem;
+            text-align: center;
+            font-family: $main-font;
+            letter-spacing: .2rem;
+            font-size: 1.5rem;
+        }
+
+        .new-title:focus {
+            outline: none;
+        }
+
+        .new-text {
+            grid-column: 1/5;
+            grid-row: 3/7;
+            background-color: $body-background-color;
+            text-align: start;
+            vertical-align: top;
+            border: 1px solid $border-outline;
+            color: $secondary-text-color;
+            padding: .3rem;
+            margin-left: .3rem;
+            margin-right: .3rem;
+            font-family: $main-font;
+            letter-spacing: .1rem;
+            font-size: 1.5rem;
+        }
+
+        .new-text:focus {
+            outline: none;
+        }
+
+        .new-button {
+            grid-column: 4/5;
+            grid-row: 8;
+            background-color: $button-ok-color;
+            color: $secondary-text-color;
+            margin-right: .3rem;
+            margin-bottom: .3rem;
+        }
+    }
+
+    .overlay-button {
+        grid-column: 6;
+        grid-row: 1;
+        background-color: transparent;
+        font-size: 5vh;
+        border: none;
+        color: $secondary-text-color;
+    }
+
+    .note-username {
+        grid-column: 3/5;
+        grid-row: 1;
+        font-size: 12vh;
+        max-width: fit-content;
+        place-self: center;
+        background-color: $text-background-color;
+        border-radius: 1rem;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+        font-family: "Fjalla One", sans-serif;
+        padding: .5rem;
+    }
+
+    .update-note {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(7, 1fr) 3rem;
+
+        .update-text {
+            grid-column: 3/5;
+            grid-row: 2/8;
+            margin-top: 2.8rem;
+            padding: .3rem;
+            margin-left: .3rem;
+            background-color: $text-background-color;
+            font-family: $main-font;
+            font-size: 1.5rem;
+        }
+
+        .updatepost-button {
+            grid-column: 4;
+            grid-row: 8;
+            background-color: $button-ok-color;
+            color: $secondary-text-color;
+        }
+
+        .updateclose-button {
+            grid-column: 3;
+            grid-row: 8;
+            background-color: $button-no-color;
+            color: $primary-text-color;
+            margin-left: .3rem;
+        }
+    }
+
+}
