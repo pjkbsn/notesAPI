@@ -43,7 +43,7 @@ export const showOverlay = (notesData: Notes[]) => {
         if (!usernameAdded && note.username) {
             const noteUsername: HTMLDivElement = document.createElement('div');
             noteUsername.setAttribute('class', 'note-username');
-            noteUsername.textContent = username;/* note.username.toUpperCase(); */
+            noteUsername.textContent = username;
 
             overlay.appendChild(noteUsername)
 
@@ -78,14 +78,12 @@ export const showOverlay = (notesData: Notes[]) => {
         allNotes.appendChild(deleteButton)
         allNotes.appendChild(updateButton)
 
-
+        const noteID: string = note.id;
         updateButton.addEventListener('click', () => {
 
             //GÖM NEWNOTE
 
             newNote.style.display = 'none';
-
-            const noteID: string = note.id;
 
 
             const updateNote: HTMLDivElement = document.createElement('div');
@@ -121,12 +119,7 @@ export const showOverlay = (notesData: Notes[]) => {
                 newNote.style.display = 'grid';
                 const newText: string = updateText.value;
 
-                console.log(updateButton);
-
-
                 await updateData(newText, noteID, username);
-
-
 
                 document.body.removeChild(overlay);
                 updateNote.parentNode?.removeChild(updateNote);
@@ -135,9 +128,6 @@ export const showOverlay = (notesData: Notes[]) => {
         });
 
         deleteButton.addEventListener('click', async () => {
-            const noteID: string = note.id;
-            console.log(noteID);
-
             await deleteData(noteID, username);
             document.body.removeChild(overlay);
         });
@@ -180,7 +170,7 @@ export const showOverlay = (notesData: Notes[]) => {
         document.body.removeChild(overlay);
     });
 
-    // Lägg till event listener för att stänga overlay vid klick på knapp
+    // Eventlistener för att stänga overlay vid klick på knapp
     overlayButton.addEventListener('click', () => {
         document.body.removeChild(overlay);
     });

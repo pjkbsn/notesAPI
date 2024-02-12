@@ -1,5 +1,5 @@
 import { getData } from "../APIs/getAPI";
-import { showOverlay } from "../components/displayNotes";
+import { showOverlay } from "./displayNotes";
 
 const container: HTMLDivElement = document.createElement('div');
 container.setAttribute('class', 'container')

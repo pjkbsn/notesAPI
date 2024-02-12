@@ -35,9 +35,7 @@
     }
 
     .input-button:hover {
-        background-color: $secondary-text-color;
-        color: $button-ok-color;
-        transition-delay: .05s;
+        @include onHover();
     }
 }
 
@@ -118,9 +116,7 @@
             }
 
             .deleteButton:hover {
-                background-color: $secondary-text-color;
-                color: $button-ok-color;
-                transition-delay: .05s;
+                @include onHover();
             }
 
             .updateButton {
@@ -136,9 +132,7 @@
             }
 
             .updateButton:hover {
-                background-color: $secondary-text-color;
-                color: $button-ok-color;
-                transition-delay: .05s;
+                @include onHover();
             }
         }
     }
@@ -204,9 +198,7 @@
         }
 
         .new-button:hover {
-            background-color: $secondary-text-color;
-            color: $button-ok-color;
-            transition-delay: .05s;
+            @include onHover();
         }
     }
 
@@ -220,9 +212,7 @@
     }
 
     .overlay-button:hover {
-        background-color: $secondary-text-color;
-        color: $button-ok-color;
-        transition-delay: .05s;
+        @include onHover();
     }
 
     .note-username {
@@ -278,9 +268,7 @@
         }
 
         .updatepost-button:hover {
-            background-color: $secondary-text-color;
-            color: $button-ok-color;
-            transition-delay: .05s;
+            @include onHover();
         }
 
         .updateclose-button {
@@ -296,9 +284,7 @@
         }
 
         .updateclose-button:hover {
-            background-color: $secondary-text-color;
-            color: $button-ok-color;
-            transition-delay: .05s;
+            @include onHover();
         }
     }
 

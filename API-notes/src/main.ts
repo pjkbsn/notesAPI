@@ -5,6 +5,6 @@ import './APIs/postNote';
 import './APIs/updateNote';
 import './APIs/deleteNote';
 
-import './components/inputUsername';
-import './components/displayNotes';
+import './modules/inputUsername';
+import './modules/displayNotes';
 

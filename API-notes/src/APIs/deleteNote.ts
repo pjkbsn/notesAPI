@@ -1,6 +1,6 @@
-import axios/* , { AxiosResponse } */ from "axios";
+import axios from "axios";
 import { getData } from "./getAPI";
-import { showOverlay } from "../components/displayNotes";
+import { showOverlay } from "../modules/displayNotes";
 
 const BASE_URL = "https://o6wl0z7avc.execute-api.eu-north-1.amazonaws.com"
 
@@ -13,6 +13,6 @@ export const deleteData = async (noteID: any, username: string) => {
         showOverlay(refreshOverlay);
     }
     catch (error) {
-        console.error(error)
+        console.error("Error deleting data: ", error)
     }
 };

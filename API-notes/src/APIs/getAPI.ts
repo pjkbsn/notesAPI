@@ -19,7 +19,7 @@ export const getData = async (username: string): Promise<Notes[]> => {
 
         return notesData;
     } catch (error) {
-        console.error("Error fetching data from API:", error);
+        console.error("Error fetching data from API: ", error);
         return [];
     }
 };
